@@ -1,5 +1,3 @@
----
-
 tasks:
   - name: Update all packages
     yum:

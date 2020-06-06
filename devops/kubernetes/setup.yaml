@@ -19,5 +19,4 @@
   tasks:
 
     - name: Check kubectl
-      shell: kubectl version
-      delegate_to: localhost
+      command: kubectl version

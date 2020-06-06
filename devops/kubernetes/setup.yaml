@@ -11,3 +11,13 @@
 
     - name: Install Kubernetes
       include_tasks: kubernetes.yaml
+
+- name: Check version
+  hosts: localhost
+  become: yes
+
+  tasks:
+
+    - name: Check kubectl
+      shell: kubectl version
+      delegate_to: localhost

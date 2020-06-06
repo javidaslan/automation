@@ -1,17 +1,14 @@
-- hosts: localhost
-  tasks:
+- name: Pull kubectl
+  shell: curl -LO https://storage.googleapis.com/kubernetes-release/release/$(curl -s https://storage.googleapis.com/kubernetes-release/release/stable.txt)/bin/linux/amd64/kubectl
 
-  - name: Pull kubectl
-    shell: curl -LO https://storage.googleapis.com/kubernetes-release/release/$(curl -s https://storage.googleapis.com/kubernetes-release/release/stable.txt)/bin/linux/amd64/kubectl
+- name: Make kubectl executable
+  shell: chmod +x ./kubectl
 
-  - name: Make kubectl executable
-    shell: chmod +x ./kubectl
+- name: Install it
+  shell: mv ./kubectl /usr/local/bin/kubectl
 
-  - name: Install it
-    shell: mv ./kubectl /usr/local/bin/kubectl
+- name: Pull minikube
+  shell: curl -Lo minikube https://storage.googleapis.com/minikube/releases/latest/minikube-linux-amd64 && chmod +x minikube
 
-  - name: Pull minikube
-    shell: curl -Lo minikube https://storage.googleapis.com/minikube/releases/latest/minikube-linux-amd64 && chmod +x minikube
-
-  - name: Make kubectl executable
-    shell: install minikube /usr/local/bin
+- name: Make kubectl executable
+  shell: install minikube /usr/local/bin

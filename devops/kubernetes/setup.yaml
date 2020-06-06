@@ -1,0 +1,13 @@
+---
+
+- name: Install Docker and Kubernetes
+  hosts: localhost
+  become: yes
+
+  tasks:
+
+    - name: Install Docker
+      include_tasks: docker.yaml
+
+    - name: Install Kubernetes
+      include_tasks: kubernetes.yaml
